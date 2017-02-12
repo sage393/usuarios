@@ -26,9 +26,9 @@ public class UsuarioControl implements Serializable {
 
     @EJB
     UsuariosFacade usuariosFacade;
-    
+
     private Usuarios usuarioSelected;
-            
+
     private List<Usuarios> lstUsuarios;
 
     @PostConstruct
@@ -41,21 +41,28 @@ public class UsuarioControl implements Serializable {
         lstUsuarios = usuariosFacade.findAll();
         return lstUsuarios;
     }
-    
+
     public void guardarUsuario() {
         try {
             usuariosFacade.edit(usuarioSelected);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "REGISTRO GUARDADO", "PrimeFaces Rocks."));
-            
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(
+                            FacesMessage.SEVERITY_INFO,
+                            "REGISTRO GUARDADO",
+                            "PrimeFaces Rocks."
+                    )
+            );
+
             usuarioSelected = new Usuarios();
             listarUsuarios();
-            
+
             System.out.println("Resgistro guardado");
         } catch (Exception e) {
             System.out.println("Error al guardar registro: " + e);
         }
     }
-    
+
     public void borrarUsuario() {
         usuariosFacade.remove(usuarioSelected);
         listarUsuarios();
@@ -84,5 +91,5 @@ public class UsuarioControl implements Serializable {
     public void setUsuarioSelected(Usuarios usuarioSelected) {
         this.usuarioSelected = usuarioSelected;
     }
-    
+
 }
