@@ -10,13 +10,21 @@
         <h:form id="frmUsuarios" >
             <p:panel id="pnlUsuarios" >
                 <f:facet name="header">
-                    <p:outputLabel value="Usuarios" style="text-align: center" />
+                    <p:outputLabel value="Usuarios" 
+                                   style="text-align: center" />
                 </f:facet>
                 <p:dataTable var="usuario" 
                              value="#{usuarioControl.lstUsuarios}"
                              rows="5"
                              paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             paginatorTemplate="
+                                {CurrentPageReport} 
+                                {FirstPageLink} 
+                                {PreviousPageLink} 
+                                {PageLinks} 
+                                {NextPageLink} 
+                                {LastPageLink} 
+                                {RowsPerPageDropdown}"
                              rowsPerPageTemplate="5,10,15">
                     <p:column headerText="ID">
                         <h:outputLabel value="#{usuario.id}" />
@@ -27,12 +35,17 @@
                     <p:column headerText="Email">
                         <h:outputLabel value="#{usuario.email}" />
                     </p:column>
-                    <p:column headerText="Acciones" style="width: 10%">
-                        <p:commandButton icon="fa fa-pencil-square-o" action="faces/Formularios/frmNuevoUsuario.xhtml?faces-redirect=true">
-                            <f:setPropertyActionListener target="#{usuarioControl.usuarioSelected}" value="#{usuario}" />
+                    <p:column headerText="Acciones" 
+                              style="width: 10%">
+                        <p:commandButton icon="fa fa-pencil-square-o" 
+                                         action="faces/Formularios/frmNuevoUsuario.xhtml?faces-redirect=true">
+                            <f:setPropertyActionListener target="#{usuarioControl.usuarioSelected}" 
+                                                         value="#{usuario}" />
                         </p:commandButton>
-                        <p:commandButton icon="fa fa-times" oncomplete="PF('wdlgBorrar').show()" >
-                            <f:setPropertyActionListener target="#{usuarioControl.usuarioSelected}" value="#{usuario}" />
+                        <p:commandButton icon="fa fa-times" 
+                                         oncomplete="PF('wdlgBorrar').show()" >
+                            <f:setPropertyActionListener target="#{usuarioControl.usuarioSelected}" 
+                                                         value="#{usuario}" />
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
@@ -44,10 +57,12 @@
                 <p:panelGrid columns="2" >
                     <p:outputLabel value="¿Deseas borrar el registro?" />
                     <h:panelGroup />
-                    <p:commandButton value="SI" oncomplete="PF('wdlgBorrar').hide()"
+                    <p:commandButton value="SI" 
+                                     oncomplete="PF('wdlgBorrar').hide()"
                                      action="#{usuarioControl.borrarUsuario()}"
                                      update=":frmUsuarios:pnlUsuarios" />
-                    <p:commandButton value="NO" oncomplete="PF('wdlgBorrar').hide()" />
+                    <p:commandButton value="NO" 
+                                     oncomplete="PF('wdlgBorrar').hide()" />
                 </p:panelGrid>
             </p:dialog>
         </h:form>

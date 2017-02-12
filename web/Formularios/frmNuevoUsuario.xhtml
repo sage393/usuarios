@@ -15,18 +15,24 @@
                             <p:outputLabel value="Nombre" />
                         </p:column>
                         <p:column>
-                            <p:inputText id="nombre" value="#{usuarioControl.usuarioSelected.nombre}"/>
+                            <p:inputText 
+                                id="nombre" 
+                                value="#{usuarioControl.usuarioSelected.nombre}"/>
                         </p:column>
                         <p:column>
-                            <p:outputLabel value="Email" />
+                            <p:outputLabel  value="Email" />
                         </p:column>
                         <p:column>
-                            <p:inputText id="email" value="#{usuarioControl.usuarioSelected.email}"/>
+                            <p:inputText 
+                                id="email" 
+                                value="#{usuarioControl.usuarioSelected.email}"/>
                         </p:column>
                     </p:row>
                     <p:row>
                         <p:column colspan="4">
-                            <p:commandButton value="Guardar" action="#{usuarioControl.guardarUsuario}" update="pnlNuevoUsuario"/>
+                            <p:commandButton 
+                                value="Guardar" action="#{usuarioControl.guardarUsuario}" 
+                                update="pnlNuevoUsuario"/>
                         </p:column>
                     </p:row>
                 </p:panelGrid>
